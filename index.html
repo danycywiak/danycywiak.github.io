@@ -1,123 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Daniela Cywiak | AI/ML Engineer</title>
-    <meta name="description" content="Daniela Cywiak - AI/ML Engineer, Data Scientist, Computational Physics">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniela Cywiak | AI/ML Engineer</title>
+  <meta name="description" content="Daniela Cywiak - AI/ML Engineer, Data Scientist, Computational Physics, Computer Vision, OCR and Machine Learning." />
+  <style>
+    :root {
+      --bg: #07101f;
+      --bg-soft: #0d172b;
+      --card: rgba(17, 24, 39, 0.8);
+      --border: rgba(255,255,255,0.08);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #60a5fa;
+      --accent-2: #a78bfa;
+      --max: 1080px;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0b0f1a;
-            color: white;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(96,165,250,0.12), transparent 30%),
+        linear-gradient(180deg, #060d1a 0%, #091224 100%);
+    }
 
-        header {
-            text-align: center;
-            padding: 100px 20px 60px;
-        }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(7, 16, 31, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
+    .nav-inner, .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        h2 {
-            margin-top: 60px;
-            text-align: center;
-        }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 68px;
+    }
 
-        p {
-            color: #ccc;
-        }
+    .brand {
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-        .projects {
-            display: grid;
-            gap: 20px;
-        }
+    .nav-links a, a {
+      color: var(--text);
+      text-decoration: none;
+    }
 
-        .card {
-            background-color: #111827;
-            padding: 20px;
-            border-radius: 10px;
-        }
+    .nav-links a:hover, .project-link:hover, .contact-links a:hover {
+      color: var(--accent);
+    }
 
-        a {
-            color: #4ea1ff;
-            text-decoration: none;
-        }
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
 
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4ea1ff;
-            color: white;
-            border-radius: 6px;
-        }
-    </style>
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 28px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.03;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.07rem;
+      line-height: 1.75;
+      max-width: 700px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(96,165,250,0.08), rgba(167,139,250,0.06));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      transform: translateY(0);
+      animation: floatIn 1s ease;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin: 0 0 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.75;
+      margin-bottom: 26px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .skills-grid, .projects-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .project-card h3, .card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 28px 0 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 40px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-    <h1>Daniela Cywiak</h1>
-    <p>AI/ML Engineer | Data Scientist | Computational Physics</p>
-    <p>Building intelligent systems with data, machine learning and simulation.</p>
-
-    <a href="#" class="button">Download CV</a>
-</header>
-
-<div class="container">
-
-    <!-- ABOUT -->
-    <h2>About Me</h2>
-    <p>
-        I am a Physics PhD specialized in computational simulations and currently working as an AI/ML Engineer.
-        I focus on building intelligent systems, document processing pipelines, and data-driven solutions.
-    </p>
-
-    <!-- PROJECTS -->
-    <h2>Projects</h2>
-
-    <div class="projects">
-
-        <div class="card">
-            <h3>AI Document Processing Pipeline</h3>
-            <p>Extraction of structured data from scanned PDFs using OCR, LLMs and computer vision.</p>
-            <a href="#">View project</a>
-        </div>
-
-        <div class="card">
-            <h3>Insurance Chatbot</h3>
-            <p>Conversational AI system for insurance quoting using APIs and backend automation.</p>
-            <a href="#">View project</a>
-        </div>
-
-        <div class="card">
-            <h3>Monte Carlo Simulations</h3>
-            <p>Research project on liquid crystals and dipolar interactions using computational physics.</p>
-            <a href="#">View project</a>
-        </div>
-
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">Daniela Cywiak</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- CONTACT -->
-    <h2>Contact</h2>
-    <p>Email: da.cywiak@gmail.com</p>
-    <p>
-        <a href="https://github.com/danycywiak">GitHub</a> |
-        <a href="#">LinkedIn</a>
-    </p>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI/ML Engineer · Data Scientist · Computational Physics</div>
+          <h1>Hi, I'm Daniela Cywiak.</h1>
+          <p>
+            I build intelligent systems across machine learning, computer vision, OCR, scientific computing, and applied AI. My background combines computational physics research with real-world AI/ML development.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="CV_Daniela_Cywiak.pdf">Download CV</a>
+          </div>
+        </div>
 
-</div>
+        <div class="hero-card">
+          <h3>Focus Areas</h3>
+          <ul>
+            <li>Machine Learning and Deep Learning pipelines</li>
+            <li>Computer Vision, OCR and feature extraction</li>
+            <li>Algorithm development and data analysis</li>
+            <li>Scientific simulations and modeling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          I am a Physics PhD with experience in algorithm development, data analysis, and machine learning, working at the intersection of computational modeling and applied AI.
+        </p>
+
+        <div class="grid about-grid">
+          <div class="card">
+            <h3>What I do</h3>
+            <p>
+              I design and implement custom algorithms for data processing, feature extraction, pattern detection, clustering, machine learning pipelines, and computer vision tasks.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Current Work</h3>
+            <p>
+              I currently work on applied AI/ML projects including OCR pipelines, image preprocessing, feature extraction, model validation, and industry-oriented intelligent solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">
+          A mix of applied AI, computer vision, data science, and computational research projects.
+        </p>
+
+        <div class="grid projects-grid">
+          <div class="card project-card">
+            <h3>AI Document Processing Pipeline</h3>
+            <p>
+              Pipeline for extracting structured information from scanned PDFs using OCR, preprocessing, checkbox detection logic, and AI-based post-processing.
+            </p>
+            <div class="tag-row">
+              <span class="tag">OCR</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Document AI</span>
+            </div>
+          </div>
+
+          <div class="card project-card">
+            <h3>Insurance Chatbot</h3>
+            <p>
+              AI solution for insurance quoting and workflow automation, including validation, backend interactions, and user-centered testing.
+            </p>
+            <div class="tag-row">
+              <span class="tag">LLMs</span>
+              <span class="tag">APIs</span>
+              <span class="tag">Testing</span>
+            </div>
+          </div>
+
+          <div class="card project-card">
+            <h3>Pupil Detection</h3>
+            <p>
+              Computer vision algorithm for pupil detection using image preprocessing and Hough Circle Transform-based methods.
+            </p>
+            <a class="project-link" href="https://github.com/danycywiak/pupil-detection-hough" target="_blank">View on GitHub</a>
+            <div class="tag-row">
+              <span class="tag">Computer Vision</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+
+          <div class="card project-card">
+            <h3>Life Expectancy Prediction</h3>
+            <p>
+              Neural-network-based prediction model using socioeconomic and health-related variables.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Neural Networks</span>
+              <span class="tag">Regression</span>
+              <span class="tag">Data Science</span>
+            </div>
+          </div>
+
+          <div class="card project-card">
+            <h3>Monte Carlo Algorithm</h3>
+            <p>
+              Dynamic Monte Carlo simulation framework to study the static and dynamic properties of rod-like particle systems.
+            </p>
+            <a class="project-link" href="https://github.com/danycywiak/Monte-Carlo-Algorithm-Spherocylinders" target="_blank">View on GitHub</a>
+            <div class="tag-row">
+              <span class="tag">Fortran</span>
+              <span class="tag">Simulation</span>
+              <span class="tag">Physics</span>
+            </div>
+          </div>
+
+          <div class="card project-card">
+            <h3>Titanic & Retail Analytics</h3>
+            <p>
+              Exploratory analysis, visualization, and predictive modeling projects using SQL, Power BI, and Python.
+            </p>
+            <div class="tag-row">
+              <span class="tag">SQL</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">Technical foundations across ML, CV, data, and scientific computing.</p>
+
+        <div class="grid skills-grid">
+          <div class="card">
+            <h3>Programming</h3>
+            <p>Python, SQL, Fortran, Linux, Git</p>
+          </div>
+
+          <div class="card">
+            <h3>Machine Learning</h3>
+            <p>Scikit-learn, TensorFlow, PyTorch, supervised and unsupervised learning, CNNs, DBSCAN</p>
+          </div>
+
+          <div class="card">
+            <h3>Computer Vision & Data</h3>
+            <p>OCR, image preprocessing, feature extraction, Matplotlib, Pandas, NumPy, Power BI</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <h2 class="section-title">Publications</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Selected Work</h3>
+            <p>
+              <a class="project-link" target="_blank" href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.105.014703">Physical Review E publication</a><br>
+              <a class="project-link" target="_blank" href="https://arxiv.org/abs/2110.01491">arXiv preprint</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Feel free to reach out for AI/ML, computer vision, research, or collaboration opportunities.</p>
+        <div class="contact-links">
+          <a href="mailto:da.cywiak@gmail.com">da.cywiak@gmail.com</a>
+          <a target="_blank" href="https://github.com/danycywiak">GitHub</a>
+          <a target="_blank" href="https://www.linkedin.com/in/daniela-cywiak/">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Daniela Cywiak</div>
+  </footer>
 </body>
 </html>
